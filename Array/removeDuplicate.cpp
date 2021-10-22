@@ -3,11 +3,15 @@ using namespace std;
 
 void removeDuplicate(int arr[], int size){
   int j=0;
+  
+  // Iterate till second last. check if next number is same or not. if same skip number. only keep last element of duplicate elements. 
   for(int i=0; i<size-1; i++){
     if(arr[i] != arr[i+1]){
       arr[j++] = arr[i];
     }
   }
+
+  // Include last element of array in output.
   arr[j] = arr[size - 1];
   for(int i=0; i<=j; i++){
     cout << arr[i];
