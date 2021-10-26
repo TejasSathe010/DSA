@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.ipynb": "ipython",
+        "unordered_set": "cpp"
+    }
+}
