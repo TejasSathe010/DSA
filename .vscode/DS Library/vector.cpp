@@ -2,6 +2,8 @@
 // the Vector Class in C++
 
 #include <iostream>
+#include <limits.h>
+
 using namespace std;
 template <typename T> class Vector
 {
@@ -76,6 +78,36 @@ public:
 	  return arr[currentSize-1];
 	}
 
+    int max()
+    {
+        int max = INT_MIN;
+        for(int i = 0; i < currentSize; i++)
+        {
+            if(arr[i] > max)
+            {
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+
+    int min()
+    {
+        int min = INT_MAX;
+        for(int i = 0; i < currentSize; i++)
+        {
+            if(arr[i] < min)
+            {
+                min = arr[i];
+            }
+        }
+        return min;
+    }
+
+
+    // Implement Sort.
+    // void sort() { }
+
 	int size() { return currentSize; }
 
 	int getcapacity() { return capacity; }
@@ -130,6 +162,11 @@ int main()
 	cout << "Front Vector element: " << v.front();
 	cout << endl;
     cout << "Back Vector element: " << v.end(); 
+    cout << endl;
+    cout << "Max Vector element: " << v.max();
+    cout << endl;
+    cout << "Min Vector element: " << v.min();
+	cout << endl;
 
 	return 0;   
 }
