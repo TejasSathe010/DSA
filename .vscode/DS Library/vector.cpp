@@ -104,6 +104,14 @@ public:
         return min;
     }
 
+	void printReverse() 
+	{
+		for(int i = currentSize-1; i >= 0; i--)
+		{
+			cout << arr[i] << " ";
+		}
+		cout << endl;
+	}
 
     // Implement Sort.
     // void sort() { }
@@ -158,6 +166,9 @@ int main()
 
 	cout << "Vector elements: ";
 	v.print();
+
+	cout << "Vector elements reversed: ";
+	v.printReverse();
 	
 	cout << "Front Vector element: " << v.front();
 	cout << endl;
