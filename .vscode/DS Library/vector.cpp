@@ -20,7 +20,8 @@ public:
 		currentSize = 0;
 	}
 	
-	Vector(T* data, int n){
+	Vector(T* data, int n)
+	{
 	  capacity = n;
 	  T* temp = new T[capacity];
 	  for(int i=0; i<n; i++){
@@ -113,7 +114,18 @@ public:
 		cout << endl;
 	}
 
-    // Implement Sort.
+	// TODO: Complete following function.
+	T* reverse()
+	{	
+		T reversed[] = new T[currentSize];
+		for(int i = currentSize-1; i >= 0; i--)
+		{
+			reversed[currentSize-i] = arr[i];
+		}
+		return reversed;
+	}
+
+    // TODO: Implement Sort.
     // void sort() { }
 
 	int size() { return currentSize; }
@@ -127,6 +139,7 @@ public:
 		}
 		cout << endl;
 	}
+
 };
 
 int main()
@@ -179,5 +192,6 @@ int main()
     cout << "Min Vector element: " << v.min();
 	cout << endl;
 
-	return 0;   
+
+	return 0;
 }
