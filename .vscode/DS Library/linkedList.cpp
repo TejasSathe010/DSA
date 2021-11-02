@@ -13,7 +13,11 @@ class Node{
 
 class LinkedList{
     public:
-    Node* head = NULL;
+    Node* head;
+
+    LinkedList(){
+        head = NULL;
+    }
 
     Node* createNewNode(int data){
         Node* newNode = new Node();
@@ -29,13 +33,21 @@ class LinkedList{
         } else {
             temp -> next = head;
             head = temp;
-            cout << "Node Prepended" << endl;
         }
+    }
+
+    void insertAtTheEnd(int data){
+        Node* temp = createNewNode(data);
+        Node* end = head;
+        while(end -> next != NULL){
+            end = end -> next;
+        }
+        end -> next = temp;
     }
 
     void printLinkedList(){
         Node* temp = head;
-        while(temp->next != NULL){
+        while(temp != NULL){
             cout << temp->data << " ";
             temp = temp->next;
         }
@@ -50,7 +62,11 @@ int main(){
     list.insertInTheBeginning(6);
     list.insertInTheBeginning(7);
     list.insertInTheBeginning(8);
-    list.insertInTheBeginning(9);
+
+    list.insertAtTheEnd(1);
+    list.insertAtTheEnd(2);
+    list.insertAtTheEnd(3);
+    list.insertAtTheEnd(4);
 
     list.printLinkedList();
 }
