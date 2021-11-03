@@ -108,6 +108,34 @@ class LinkedList{
       }
   }
 
+  int popFront(){
+    if(head==NULL){
+      cout << "List is Empty " << endl;
+    }else{
+      Node* temp = head;
+      int data = temp->data;
+      head = temp->next;
+      size--;
+      delete temp;
+      cout << "Front Node deleted " << data << endl;
+    }
+  }
+
+  int popBack(){
+    if(head==NULL){
+      cout << "List is Empty " << endl;
+    }else{
+      Node* ptr = head;
+      while(ptr-> next-> next != NULL){
+        ptr = ptr->next;
+      }
+      cout << "End Node deleted " << ptr->next->data << endl;
+      ptr->next = NULL;
+      size--;
+      delete ptr->next;
+    }
+  }
+
   void printList(){
     Node* ptr = head;
     while(ptr != NULL){
@@ -136,4 +164,12 @@ int main(){
 //   list.InsertAfter(9, 99);
 
   list.printList();
+  list.popFront();
+  list.printList();
+
+  list.printList();
+  list.popBack();
+  list.printList();
+  cout << list.size << endl;
+
 }

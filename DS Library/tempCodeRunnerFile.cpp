@@ -1,4 +1,4 @@
-list.insertAtTheEnd(1);
-    list.insertAtTheEnd(2);
-    list.insertAtTheEnd(3);
-    list.insertAtTheEnd(4);
+list.appendNode(5);
+  // list.appendNode(6);
+  // list.appendNode(7);
+  // list.appendNode(5);
