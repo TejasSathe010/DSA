@@ -13,15 +13,18 @@ class Node{
 };
 
 class LinkedList{
+  private:
+  int size;
+
   public:
   Node* head;
-  int size;
   
   LinkedList(){
     head = NULL;
     size = 0;
   }
   
+  // Utility function
   Node* createNewNode(int data){
     size++;
     Node* newNode = new Node();
@@ -30,6 +33,7 @@ class LinkedList{
     return newNode;
   }
   
+  // Utility function
   Node* nodeExists(int data){
       Node* temp = NULL;
       Node* ptr = head;
@@ -42,12 +46,26 @@ class LinkedList{
       return temp;
   }
 
+  // Utility function
+  int getSize(){
+    return size;
+  }
+
+  // Utility function
+  bool isEmpty(){
+    if(head == NULL){
+      return true;
+    }
+    return false;
+  }
+
+
   void appendNode(int data){
     if(nodeExists(data) != NULL){
         cout << "Data " << data << " already exists" << endl;
     }else{
         Node* newNode = createNewNode(data);
-        if(head == NULL){
+        if(isEmpty()){
             head = newNode;
             cout << "Node Appended!! " << endl;
         }else{
@@ -66,7 +84,7 @@ class LinkedList{
         cout << "Data " << data << " already exists" << endl;
       }else{
           Node* newNode = createNewNode(data);
-          if(head == NULL){
+          if(isEmpty()){
               head = newNode;
               cout << "Node Prepended!! " << endl;
           }else{
@@ -108,7 +126,7 @@ class LinkedList{
       }
   }
 
-  int popFront(){
+  void popFront(){
     if(head==NULL){
       cout << "List is Empty " << endl;
     }else{
@@ -121,7 +139,7 @@ class LinkedList{
     }
   }
 
-  int popBack(){
+  void popBack(){
     if(head==NULL){
       cout << "List is Empty " << endl;
     }else{
@@ -133,6 +151,34 @@ class LinkedList{
       ptr->next = NULL;
       size--;
       delete ptr->next;
+    }
+  }
+
+  void popAtLoc(int loc){
+      Node* ptr = head;
+      int pos = loc;
+      if (loc < 1 || loc > size + 1)
+        cout << "Invalid position!" << endl;
+      else {
+          while(loc--){
+              if(loc==1){
+                  Node* nextNode = ptr->next;
+                  ptr->next = nextNode->next;
+                  cout << "Node Delete At Position " << pos <<" With data " << nextNode->data << endl;
+                  size--;
+                  delete nextNode;
+              }else{
+                  ptr = ptr->next;
+              }
+          }
+      }
+  }
+
+  void isNodeExist(int data){
+    if(nodeExists(data) != NULL){
+      cout << "Node Exists " << data << endl;
+    }else{
+      cout << "Node is not exists " << data << endl;
     }
   }
 
@@ -155,13 +201,13 @@ int main(){
   list.appendNode(7);
   list.appendNode(5);
 
-  cout << list.size << endl;
+  cout << list.getSize() << endl;
   list.InsertAtLoc(2, 9);
 
 
-//   list.prependNode(9);
-//   list.prependNode(7);
-//   list.InsertAfter(9, 99);
+  list.prependNode(9);
+  list.prependNode(7);
+  list.InsertAfter(9, 99);
 
   list.printList();
   list.popFront();
@@ -170,6 +216,13 @@ int main(){
   list.printList();
   list.popBack();
   list.printList();
-  cout << list.size << endl;
+  list.popAtLoc(2);
+  cout << list.getSize() << endl;
+
+  list.isNodeExist(6);
 
 }
+
+// TODO: Add Reverse Function
+// TODO: Add Menu
+// TODO: Add Restructure
