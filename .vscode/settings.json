@@ -2,6 +2,7 @@
     "files.associations": {
         "*.ipynb": "ipython",
         "unordered_set": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "iterator": "cpp"
     }
 }

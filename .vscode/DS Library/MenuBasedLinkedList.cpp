@@ -15,12 +15,15 @@ class Node{
 class LinkedList{
   public:
   Node* head;
+  int size;
   
   LinkedList(){
     head = NULL;
+    size = 0;
   }
   
   Node* createNewNode(int data){
+    size++;
     Node* newNode = new Node();
     newNode->data = data;
     newNode->next = NULL;
@@ -88,18 +91,20 @@ class LinkedList{
 
   void InsertAtLoc(int loc, int data){
       Node* ptr = head;
-      while(loc > 1){
-          ptr = ptr->next;
-          loc--;
-      }
-      if(ptr == NULL){
-          cout << "Loc Maxed out appending at the end of the list!! " << endl;
-          appendNode(data);
-      }else{
-          Node* newNode = createNewNode(data);
-          newNode->next = ptr->next;
-          ptr->next = newNode;
-          cout << "Node Added At Position " << loc+1 << endl;
+      int pos = loc;
+      if (loc < 1 || loc > size + 1)
+        cout << "Invalid position!" << endl;
+      else {
+          while(loc--){
+              if(loc==0){
+                  Node* newNode = createNewNode(data);
+                  newNode->next = ptr->next;
+                  ptr->next = newNode;
+                  cout << "Node Added At Position " << pos << endl;
+              }else{
+                  ptr = ptr->next;
+              }
+          }
       }
   }
 
@@ -122,7 +127,8 @@ int main(){
   list.appendNode(7);
   list.appendNode(5);
 
-  list.InsertAtLoc(2, 100);
+  cout << list.size << endl;
+  list.InsertAtLoc(2, 9);
 
 
 //   list.prependNode(9);
