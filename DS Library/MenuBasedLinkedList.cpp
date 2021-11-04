@@ -182,7 +182,7 @@ class LinkedList{
     }
   }
 
-  void reversed(){
+  void reversedIterative(){
     Node* prev = NULL;
     Node* current = head;
     Node* next = NULL;
@@ -193,7 +193,18 @@ class LinkedList{
       current = next;
     }
     head = prev;
-    cout << "LinkedList reversed!! " << endl;
+    cout << "LinkedList reversed iteratively!! " << endl;
+  }
+
+  Node* reversedRecursive(Node* head){
+    if(head == NULL || head->next == NULL){
+      cout << "LinkedList reversed recursivly!! " << endl;
+      return head;
+    }
+    Node *rest = reversedRecursive(head->next);
+    head->next->next = head;
+    head->next = NULL;
+    return rest;
   }
 
   void printList(){
@@ -215,30 +226,32 @@ int main(){
   list.appendNode(7);
   list.appendNode(5);
 
-  cout << list.getSize() << endl;
-  list.InsertAtLoc(2, 9);
+  // cout << list.getSize() << endl;
+  // list.InsertAtLoc(2, 9);
 
 
-  list.prependNode(9);
-  list.prependNode(7);
-  list.InsertAfter(9, 99);
+  // list.prependNode(9);
+  // list.prependNode(7);
+  // list.InsertAfter(9, 99);
 
+  // list.printList();
+  // list.popFront();
+  // list.printList();
+
+  // list.printList();
+  // list.popBack();
+  // list.printList();
+  // list.popAtLoc(2);
+  // cout << list.getSize() << endl;
+
+  // list.isNodeExist(6);
+
+  // list.printList();
+  // list.reversedIterative();
   list.printList();
-  list.popFront();
-  list.printList();
 
+  list.head = list.reversedRecursive(list.head);
   list.printList();
-  list.popBack();
-  list.printList();
-  list.popAtLoc(2);
-  cout << list.getSize() << endl;
-
-  list.isNodeExist(6);
-
-  list.printList();
-  list.reversed();
-  list.printList();
-
 }
 
 // TODO: Add Reverse Function
