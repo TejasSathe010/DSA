@@ -182,6 +182,20 @@ class LinkedList{
     }
   }
 
+  void reversed(){
+    Node* prev = NULL;
+    Node* current = head;
+    Node* next = NULL;
+    while(current != NULL){
+      next = current->next;
+      current->next = prev;
+      prev = current;
+      current = next;
+    }
+    head = prev;
+    cout << "LinkedList reversed!! " << endl;
+  }
+
   void printList(){
     Node* ptr = head;
     while(ptr != NULL){
@@ -220,6 +234,10 @@ int main(){
   cout << list.getSize() << endl;
 
   list.isNodeExist(6);
+
+  list.printList();
+  list.reversed();
+  list.printList();
 
 }
 
