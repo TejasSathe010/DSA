@@ -254,6 +254,6 @@ int main(){
   list.printList();
 }
 
-// TODO: Add Reverse Function
+// TODO: Add Reverse Function : DONE
 // TODO: Add Menu
 // TODO: Add Delete node based on data value
