@@ -195,3 +195,26 @@ int main()
 
 	return 0;
 }
+
+
+// // Updated push_back
+// void push_back( const Object & x )
+//     {
+//         if( theSize == theCapacity ) ➀
+//             reserve( 2 * theCapacity + 1 ); ➁
+//         objects[ theSize++ ] = x;
+//     }
+
+// void reserve( int newCapacity )
+//     {
+//         if( newCapacity < theSize )  ➀
+//             return;
+
+//         Object *newArray = new Object[ newCapacity ]; ➁
+//         for( int k = 0; k < theSize; ++k )            ➂
+//             newArray[ k ] = std::move( objects[ k ] );
+
+//         theCapacity = newCapacity;
+//         std::swap( objects, newArray );   ➃
+//         delete [ ] newArray;              ➄
+//     }
