@@ -84,6 +84,38 @@ class LinkedList {
         delete(temp);
     }
 
+    void deleteAtEnd() {
+        if(head == NULL) {
+            return;
+        }
+        Node *temp = head;
+        while(temp->next->next != NULL) {
+            temp = temp->next;
+        }
+        Node *del = temp->next;
+        temp->next = NULL;
+        delete(del);
+    }
+
+    void deleteAtNth(int pos) {
+        if(head == NULL) {
+            return;
+        }
+        Node *temp = head;
+        while(temp->next != NULL && pos > 1) {
+            temp = temp->next;
+            pos--;
+        }
+        if(temp->next == NULL) {
+            return;
+        }
+        Node* del = temp->next;
+        temp->next = temp->next->next;
+        delete(del);
+
+    }
+
+
     void display() {
         Node* temp = head;
         while(temp != NULL) {
@@ -103,9 +135,13 @@ int main() {
     ll.appendNode(7);
     ll.prependNode(10);
 
-    ll.insertAtTheNthPos(99, 99);
-
     ll.display();
+    // ll.insertAtTheNthPos(99, 99);
+    // ll.deleteAtHead();
+    // ll.deleteAtEnd();
+    ll.deleteAtNth(2);
+    ll.display();
+    
 
     // cout << ll.searchNode(11) << endl;
 }
