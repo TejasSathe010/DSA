@@ -112,7 +112,41 @@ class LinkedList {
         Node* del = temp->next;
         temp->next = temp->next->next;
         delete(del);
+    }
 
+    void reversedIterative() {
+        Node* prev = NULL;
+        Node* cur = head;
+        Node* nxt = NULL;
+
+        while(cur != NULL) {
+            nxt = cur->next;
+            cur->next = prev;
+
+            prev = cur;
+            cur = nxt;
+        }
+        head = prev;
+    }
+
+    Node* reversedRecursive(Node* &head) {
+        if(head == NULL || head->next == NULL) {
+            return head;
+        }
+        Node* newHead = reversedRecursive(head->next);
+        head->next->next = head;
+        head->next = NULL;
+        return newHead;
+    }
+
+    Node* reversedRecursive(Node* &head) {
+        if(head == NULL || head->next == NULL) {
+            return head;
+        }
+        Node* newHead = reversedRecursive(head->next);
+        head->next->next = head;
+        head->next = NULL;
+        return newHead;
     }
 
 
@@ -135,13 +169,20 @@ int main() {
     ll.appendNode(7);
     ll.prependNode(10);
 
+    // cout << ll.head->data << endl;
+     ll.display();
+    // // ll.insertAtTheNthPos(99, 99);
+    // // ll.deleteAtHead();
+    // // ll.deleteAtEnd();
+    // // ll.deleteAtNth(2);
+    // ll.reversedIterative();
+    // Node* newHead = ll.reversedRecursive(ll.head);
+    // ll.head = newHead;
+
+    Node* newHead = ll.reversedRecursive(ll.head, 2);
+    ll.head = newHead;
+
     ll.display();
-    // ll.insertAtTheNthPos(99, 99);
-    // ll.deleteAtHead();
-    // ll.deleteAtEnd();
-    ll.deleteAtNth(2);
-    ll.display();
-    
 
     // cout << ll.searchNode(11) << endl;
 }
