@@ -1,0 +1,1 @@
+arr_XOR^n_XOR
