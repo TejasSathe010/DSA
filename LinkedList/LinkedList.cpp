@@ -140,13 +140,8 @@ class LinkedList {
     }
 
     Node* reversedRecursive(Node* &head) {
-        if(head == NULL || head->next == NULL) {
-            return head;
-        }
-        Node* newHead = reversedRecursive(head->next);
-        head->next->next = head;
-        head->next = NULL;
-        return newHead;
+        Node
+        while(head->next != NULL && )
     }
 
 
